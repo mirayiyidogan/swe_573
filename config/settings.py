@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gotya',
-    'ckeditor'
+    'ckeditor',
+
 ]
 
 MIDDLEWARE = [ #Project security application automatically 
