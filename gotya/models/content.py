@@ -2,11 +2,12 @@ from django.db import models
 from autoslug import AutoSlugField
 from gotya.models import TagModel
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 class ContentModel(models.Model):
     header = models.CharField(max_length=50)
     picture = models.ImageField(upload_to="content_pics")
-    text= models.TextField()
+    text = RichTextField()
     created_date = models.DateTimeField(auto_now_add=True)
     edit_date = models.DateTimeField(auto_now=True)
     slug = AutoSlugField(populate_from= "header", unique= True)
