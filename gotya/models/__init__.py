@@ -1,1 +1,1 @@
-from .content import ContentModel
+from .tag import TagModel
