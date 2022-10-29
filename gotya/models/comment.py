@@ -14,4 +14,5 @@ class CommentModel(models.Model):
         verbose_name_plural = "Comments"
         verbose_name = "Comment"
 
-
+    def __str__(self):
+        return self.user.username
