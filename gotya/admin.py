@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from gotya.models import (
-    ContentModel, TagModel, CommentModel
+    ContentModel, TagModel, CommentModel, ContactModel
     )
 
 admin.site.register(TagModel)
@@ -20,3 +20,9 @@ class CommentAdmin(admin.ModelAdmin):
     search_field= ("comment_user")
 
 admin.site.register(CommentModel, CommentAdmin)
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display= ('email', "created_date")
+    search_field= ("email")
+
+admin.site.register(ContactModel, ContactAdmin)
