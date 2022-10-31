@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from gotya.models import ContentModel
 
 class CommentModel(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comment")
+    user = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name="comment")
     content = models.ForeignKey(ContentModel, on_delete=models.CASCADE, related_name="comments")
     comment = models.TextField(max_length=100)
     created_date = models.DateTimeField(auto_now_add=True)

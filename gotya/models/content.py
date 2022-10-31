@@ -12,7 +12,7 @@ class ContentModel(models.Model):
     edit_date = models.DateTimeField(auto_now=True)
     slug = AutoSlugField(populate_from= "header", unique= True)
     tags = models.ManyToManyField(TagModel, related_name="content")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="contents") #If a user will be deleted, on_delete will also deletes its contents
+    user = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name="contents") #If a user will be deleted, on_delete will also deletes its contents
 
     class Meta:
         db_table= 'content'
