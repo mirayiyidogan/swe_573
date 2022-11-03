@@ -1,5 +1,8 @@
+from multiprocessing import context
 from django.shortcuts import render
-from django.http import HttpResponse
 
 def communicate(request):
-    return HttpResponse("<h1> Hi! <h1>")
+    context = {
+        "name" : "Miray İyidoğan"
+    }
+    return render(request, 'pages/home.html', context=context) #render function will look up template files for context
