@@ -10,5 +10,5 @@ from django.conf import settings
 
 urlpatterns = [
     path('', homepage),
-    path("communicate", communicate),
+    path("communication", communicate),
 ] 
