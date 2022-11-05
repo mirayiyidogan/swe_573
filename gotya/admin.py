@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from gotya.models import (
-    ContentModel, TagModel, CommentModel, ContactModel
+    ContentModel, CategoryModel, CommentModel, ContactModel
     )
 
-admin.site.register(TagModel)
+admin.site.register(CategoryModel)
 
 @admin.register(ContentModel)
 class ContentsAdmin(admin.ModelAdmin):

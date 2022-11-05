@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+from re import template
 from environ import Env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -54,7 +55,7 @@ INSTALLED_APPS = [
     'gotya',
     'account',
     #3rd party apps
-    'ckeditor'
+    'ckeditor',
      
 ]
 

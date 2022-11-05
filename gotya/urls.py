@@ -9,6 +9,6 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', homepage),
-    path("communication", communicate),
+    path('', homepage, name='homepage'),
+    path("communication", communicate, name='communication'),
 ] 

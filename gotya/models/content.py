@@ -1,6 +1,6 @@
 from django.db import models
 from autoslug import AutoSlugField
-from gotya.models import TagModel
+from gotya.models import CategoryModel
 from django.contrib.auth.models import User
 from gotya.abstract_models import DateAbstractModel
 from ckeditor.fields import RichTextField
@@ -10,7 +10,7 @@ class ContentModel(DateAbstractModel):
     picture = models.ImageField(upload_to="content_pics")
     text = RichTextField()
     slug = AutoSlugField(populate_from= "header", unique= True)
-    tags = models.ManyToManyField(TagModel, related_name="content")
+    CategoryModels = models.ManyToManyField(CategoryModel, related_name="content")
     user = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name="contents") #If a user will be deleted, on_delete will also deletes its contents
 
     class Meta:
