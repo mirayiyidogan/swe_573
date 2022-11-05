@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} {{category_name}} {% endblock %}
+
+{% block content %} 
+
+{% for content in contents %}
+<div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ content.picture.url }}" class="img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ content.header }}</h5>
+        <p class="card-text">{{ content.text|safe|truncatechars_html:150 }}</p>
+        <p class="card-text"><small class="text-muted">Posted at {{ content.created_date|timesince }}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% empty %}
+<p>There is no content to be shown :( </p>
+{% endfor %}
+  <!-- Pagination Model -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+      {% if contents.has_previous %}
+      <li class="page-item ">
+        <a class="page-link" href="?page={{contents.previous_page_number}}">Previous</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link">Previous</a>
+      </li>
+      {% endif %}
+      <li class="page-item"><a class="page-link" href="#">{{contents.number}}</a></li>
+      {% if contents.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{contents.next_page_number}}">Next</a>
+      </li>
+      <!--
+      <li class="page-item">
+        <a class="page-link" href="?page={{contents.paginator.num_pages}}">...</a>
+      </li>
+       -->
+      {% endif %}
+      
+    </ul>
+  </nav>          
+ {% endblock %}
+ 
