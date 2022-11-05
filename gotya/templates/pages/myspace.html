@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} My Space {% endblock %}
+
+{% block content %} 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Header</th>
+      <th scope="col">Updated Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody> 
+    {% for content in contents %}
+      <tr>
+        <th scope="row">{{ content.id }}</th>
+        <td>{{ content.header }}</td>
+        <td>{{ content.updated_date|timesince }}</td>
+        <td>Actions</td>
+      </tr>
+      {% empty %}
+      <p>There is no content to be shown :( </p>
+      {% endfor %}
+  </tbody>
+  </table>
+
+
+  <!-- Pagination Model -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+      {% if contents.has_previous %}
+      <li class="page-item ">
+        <a class="page-link" href="?page={{contents.previous_page_number}}">Previous</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link">Previous</a>
+      </li>
+      {% endif %}
+      <li class="page-item"><a class="page-link" href="#">{{contents.number}}</a></li>
+      {% if contents.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{contents.next_page_number}}">Next</a>
+      </li>
+      <!--
+      <li class="page-item">
+        <a class="page-link" href="?page={{contents.paginator.num_pages}}">...</a>
+      </li>
+       -->
+      {% endif %}
+      
+    </ul>
+  </nav>          
+ {% endblock %}
+ 

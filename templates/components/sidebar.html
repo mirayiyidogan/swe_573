@@ -1,4 +1,6 @@
 <div class="col-sm-3">
+    {% if request.user.is_authenticated %}
+    <h2>Welcome back {{request.user}}!</h2>
     <div class="card mb-3" >
         <div class="card-header">
         Menu
@@ -6,8 +8,19 @@
         <ul class="list-group list-group-flush">
         <li class="list-group-item">Profile</li>
         <li class="list-group-item">Create a content</li>
+        <li class="list-group-item"><a href="{% url 'myspace' %}"> Myspace</a></li>
         <li class="list-group-item">Friends</li>
         <li class="list-group-item">Log out</li>
         </ul>
     </div>
+    {% else %}
+    <div class="card mb-3" >
+        <div class="card-header">
+        Menu
+        </div>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item">Login</li>
+        <li class="list-group-item">Sign up</li>
+    {% endif %}
+    
 </div>
