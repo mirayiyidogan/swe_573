@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} {{content.header }} {% endblock %}
 
 {% block content %} 
@@ -19,6 +19,25 @@
   </div>
 </div>
 
-  
+<h5>Comments</h5>
+{% for comment in comments %}
+<div class="card">
+    <div class="card-body" style="display:flex ; flex-direction: row">
+        <div>
+            {%  if comment.user.avatar %} 
+            <img src="{{ comment.user.avatar.url }}" class="rounded" class="pt-4" width="75px" height="75px">        
+            {% else %}
+            <img src="{% static 'img/no-avatar.jpg' %}" class="rounded" class="pt-4" width="75px" height="75px">
+            {% endif %}
+        </div>
+        <div>
+            <h5 class="card-title">{{ comment.user.username }}</h5>
+            <p class="card-text">{{ comment.comment }}</p>
+        </div>
+    </div>
+</div>
+{% empty %}
+<p>No comment to be shown. </p>
+{% endfor %}
  {% endblock %}
  
