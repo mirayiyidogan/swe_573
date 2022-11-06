@@ -10,7 +10,8 @@
         <li class="list-group-item">Create a content</li>
         <li class="list-group-item"><a href="{% url 'myspace' %}"> Myspace</a></li>
         <li class="list-group-item">Friends</li>
-        <li class="list-group-item">Log out</li>
+        <li class="list-group-item">
+            <a href="{% url 'logout' %}">Log out</a></li>
         </ul>
     </div>
     {% else %}
