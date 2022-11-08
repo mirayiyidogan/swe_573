@@ -5,4 +5,4 @@ class ProfileEdit(UserChangeForm):
     password = None
     class Meta:
         model= CustomUserModel
-        fields = ('email', 'username', 'avatar')
+        fields = ('email', 'username','first_name', 'last_name', 'avatar')
