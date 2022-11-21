@@ -2,8 +2,12 @@
 
 {% block title %} Home {% endblock %}
 
-{% block content %} 
+{% block content %}
 
-    communicate
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Send" />
+    </form>
 
  {% endblock %}
