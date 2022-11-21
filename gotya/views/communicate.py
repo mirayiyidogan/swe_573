@@ -10,11 +10,10 @@ def communicate(request):
         if form.is_valid():
             contact = ContactModel()
             contact.email = form.cleaned_data['email']
-            contact.name = form.cleaned_data['name']
-            contact.surname = form.cleaned_data['surname']
+            contact.name_surname = form.cleaned_data['name_surname']
             contact.message = form.cleaned_data['message']
             contact.save()
-            return redirect('home')
+            return redirect('homepage')
         #else:
     context = {
         'form': form
