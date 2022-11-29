@@ -6,6 +6,6 @@ def detail(request, slug):
     comments = content.comments.all()
     return render(request, 'pages/detail.html', context={
         'content' : content, 
-        'comments': comments
+        'comments': comments,
     })
     

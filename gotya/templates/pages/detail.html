@@ -11,9 +11,12 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ content.header }}</h5>
+        <h5 class="card-title">{{ content.header }} by <a href="/"> {{ content.user}} </a> </h5>
         <p class="card-text">{{ content.text|safe }}</p>
         <p class="card-text"><small class="text-muted">Posted at {{ content.created_date|timesince }}</small></p>
+        {% if request.user == content.user %}
+        <p><a class="btn btn-danger" href="{% url 'update-content' slug=content.slug %}">Edit</a></p>
+        {% endif %}
       </div>
     </div>
   </div>
