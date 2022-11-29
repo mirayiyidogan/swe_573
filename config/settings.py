@@ -157,3 +157,4 @@ AUTH_USER_MODEL= 'account.CustomUserModel'
 MEDIA_URL='/media/'
 
 MEDIA_ROOT= os.path.join(BASE_DIR,'media/') #PATH FOR MANAGE.PY IS BASE_DIR
+

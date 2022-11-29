@@ -1,1 +1,2 @@
 from .communication import CommunicationForm
+from .create_content import AddContentModelForm
