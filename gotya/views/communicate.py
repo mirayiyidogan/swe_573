@@ -8,11 +8,7 @@ def communicate(request):
     if request.method == 'POST':
         form = CommunicationForm(request.POST)
         if form.is_valid():
-            contact = ContactModel()
-            contact.email = form.cleaned_data['email']
-            contact.name_surname = form.cleaned_data['name_surname']
-            contact.message = form.cleaned_data['message']
-            contact.save()
+            form.save()
             return redirect('homepage')
         #else:
     context = {
