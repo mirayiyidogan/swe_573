@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 {% block title %} {{content.header }} {% endblock %}
 
 {% block content %} 
@@ -12,7 +14,8 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ content.header }} by <a href="/"> {{ content.user}} </a> </h5>
-        <p class="card-text">{{ content.text|safe }}</p>
+      
+  <p class="card-text">{{ content.text|safe }}</p>
         <p class="card-text"><small class="text-muted">Posted at {{ content.created_date|timesince }}</small></p>
         {% if request.user == content.user %}
         <p><a class="btn btn-primary" href="{% url 'update-content' slug=content.slug %}">Edit</a>
@@ -25,6 +28,15 @@
 </div>
 
 <h5>Comments</h5>
+{% if request.user.is_authenticated %}
+<form method="POST">
+  {% csrf_token %}
+  <p>{{ add_comment_form|crispy }}</p>
+  <p><input type="submit" value="Comment" class="btn btn-danger"></p>
+</form>
+{% else %}
+<p> To be able to comment, please login!</p>
+{% endif %}
 {% for comment in comments %}
 <div class="card">
     <div class="card-body" style="display:flex ; flex-direction: row">
