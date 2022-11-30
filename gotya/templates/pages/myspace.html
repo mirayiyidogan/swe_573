@@ -18,7 +18,11 @@
         <th scope="row">{{ content.id }}</th>
         <td>{{ content.header }}</td>
         <td>{{ content.updated_date|timesince }}</td>
-        <td>Actions</td>
+        <td>
+        <p>
+          <a class="btn btn-primary" href="{% url 'update-content' slug=content.slug %}">Edit</a>
+          <a class="btn btn-danger" href="{% url 'delete-content' slug=content.slug %}">Delete</a>
+        </p></td>
       </tr>
       {% empty %}
       <p>There is no content to be shown :( </p>
