@@ -50,7 +50,10 @@
         <div>
             <h5 class="card-title">{{ comment.user.username }}</h5>
             <p class="card-text">{{ comment.comment }}</p>
-        </div>
+            {% if request.user == comment.user or request.user == content.user %}
+              <p><a class="btn btn-danger" href="{% url 'delete-comment' id=comment.id %}">Remove</a></p>
+            {% endif %}
+          </div>
     </div>
 </div>
 {% empty %}

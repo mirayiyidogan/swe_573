@@ -6,3 +6,4 @@ from .detail import detail
 from .create_content import create_content
 from .update_content import update_content
 from .delete_content import delete_content
+from .delete_comment import delete_comment
