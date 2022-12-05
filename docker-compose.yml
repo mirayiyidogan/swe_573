@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+  gotya:
+    build: .
+    image: gotya
+    container_name: gotya
+    volumes:
+      - ".:/gotya"
+    ports:
+      - "8000:8000"
+  sqlite3:
+    image: nouchka/sqlite3:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./gotya/db/:/root/db/
