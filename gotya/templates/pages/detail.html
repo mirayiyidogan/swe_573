@@ -34,6 +34,7 @@
   <p>{{ add_comment_form|crispy }}</p>
   <p><input type="submit" value="Comment" class="btn btn-danger"></p>
 </form>
+
 {% else %}
 <p> To be able to comment, please login!</p>
 {% endif %}
@@ -44,6 +45,7 @@
     </div>
     {% endfor %}
 {% endif %}
+
 {% for comment in comments %}
 <div class="card">
     <div class="card-body" style="display:flex ; flex-direction: row">
