@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from gotya.models import ContentModel
 from gotya.forms import AddCommentFormModel
 from django.views import View
+from django.contrib import messages
 
 class DetailView(View):
     http_method_names = ['get', 'post']
@@ -24,6 +25,7 @@ class DetailView(View):
             comment.user = request.user
             comment.content = content
             comment.save()
+            messages.success(request, "Comment added successfully.")
         return redirect('detail', slug=slug)
 
 
