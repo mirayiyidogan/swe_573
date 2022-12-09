@@ -5,5 +5,5 @@ from .myspace import myspace
 from .detail import DetailView
 from .create_content import create_content
 from .update_content import update_content
-from .delete_content import delete_content
+from .delete_content import ContentDeleteView
 from .delete_comment import delete_comment

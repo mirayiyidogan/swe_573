@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from multiprocessing import context
+from gotya.models import ContentModel, CategoryModel
 from django.core.paginator import Paginator
 
 def category(request, categorySlug):
