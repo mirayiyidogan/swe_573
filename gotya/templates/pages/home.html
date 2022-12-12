@@ -13,7 +13,7 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">
-          <a href="{% url 'detail' slug=content.slug%}">{{ content.header }} </a> by <a href="/"> {{ content.user}} </a>
+          <a href="{% url 'detail' slug=content.slug%}">{{ content.header }} </a> by <a href="{% url 'profile' username=content.user.username %}"> {{ content.user}} </a>
           
         </h5>
         <p class="card-text">{{ content.text|safe|truncatechars_html:150 }}</p>

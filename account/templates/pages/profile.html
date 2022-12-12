@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} {{ profile.username }} {% endblock %}
+
+{% block content %} 
+<div class="card">
+  <div class="card-body">
+    <div class="card-text">
+      {% if request.user.is_authenticated %}
+        <p>{{ profile.username }}</p>
+      {% else %} 
+        <p>Please login to see details</p> 
+      {% endif %}
+    </div>
+  </div>
+</div>
+ {% endblock %}
+ 

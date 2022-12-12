@@ -1,5 +1,5 @@
 from django.urls import path
-from account.views import logout, reset_password, profile_update, registration
+from account.views import logout, reset_password, profile_update, registration, ProfileDetailView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -11,4 +11,6 @@ urlpatterns = [
     # reset-password linkine karşılık reset_password view ı çalışarak url ismi de reset-password olacak
     path("profile-update", profile_update, name="profile-update"),
     path("registration", registration, name="registration"),
+    path("user/<str:username>", ProfileDetailView.as_view(), name="profile"),
+
 ]
