@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import render
 from django.http import HttpResponse
-from gotya.views import communicate, homepage, category, myspace, DetailView, ContentCreateView, update_content, ContentDeleteView, delete_comment
+from gotya.views import communicate, homepage, category, myspace, DetailView, ContentCreateView, ContentUpdateView, ContentDeleteView, delete_comment
 from django.conf.urls.static import static #Static function helps us to publish media files at prod creating url pattern
 from django.conf import settings
 from django.views.generic import TemplateView,RedirectView
@@ -22,7 +22,7 @@ urlpatterns = [
     path('myspace', myspace, name='myspace'),
     path('detail/<slug:slug>', DetailView.as_view(), name='detail'),
     path('create-content', ContentCreateView.as_view(), name='create-content'),
-    path('update-content/<slug:slug>', update_content, name='update-content'),
+    path('update-content/<slug:slug>', ContentUpdateView.as_view(), name='update-content'),
     path('delete-content/<slug:slug>', ContentDeleteView.as_view(), name='delete-content'),
     path('delete-comment/<int:id>', delete_comment, name='delete-comment'),
 
