@@ -1,4 +1,4 @@
-from .communicate import communicate
+from .communicate import CommunicationFormView
 from .homepage import homepage
 from .category import category
 from .myspace import myspace

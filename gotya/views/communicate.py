@@ -2,16 +2,14 @@ from multiprocessing import context
 from django.shortcuts import render, redirect
 from gotya.forms import CommunicationForm
 from gotya.models import ContactModel
+from django.views.generic import FormView
 
-def communicate(request):
-    form = CommunicationForm()
-    if request.method == 'POST':
-        form = CommunicationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('homepage')
-        #else:
-    context = {
-        'form': form
-    }
-    return render(request, 'pages/communication.html', context=context) #render function will look up template files for context
+class CommunicationFormView(FormView):
+    template_name= 'pages/communication.html'
+    form_class= CommunicationForm
+    success_url='/communication/mail-sent'
+
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
