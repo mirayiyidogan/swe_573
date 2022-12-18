@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from gotya.forms import CommunicationForm
 from gotya.models import ContactModel
 from django.views.generic import FormView
+from django.core.mail import send_mail
 
 class CommunicationFormView(FormView):
     template_name= 'pages/communication.html'
@@ -12,4 +13,5 @@ class CommunicationFormView(FormView):
 
     def form_valid(self, form):
         form.save()
-        return super().form_valid(form)
+        form.send_email(message=form.cleaned_data.get('message'))
+        return super().form_valid(form) 

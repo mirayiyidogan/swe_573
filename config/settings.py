@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'crispy_forms',
     "crispy_bootstrap5",
+
 ]
 
 MIDDLEWARE = [
@@ -157,4 +158,18 @@ AUTH_USER_MODEL= 'account.CustomUserModel'
 MEDIA_URL='/media/'
 
 MEDIA_ROOT= os.path.join(BASE_DIR,'media/') #PATH FOR MANAGE.PY IS BASE_DIR
+
+
+
+# Host for sending e-mail.
+SENDGRID_API_KEY = env('SENDGRID_API_KEY')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL='apikey'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
+
+
 
