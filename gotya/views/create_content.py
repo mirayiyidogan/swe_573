@@ -1,10 +1,13 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import reverse
+from django.urls import reverse_lazy, reverse
 from gotya.forms import AddContentModelForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from gotya.models import ContentModel
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class ContentCreateView(CreateView):
+class ContentCreateView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     template_name= 'pages/create-content.html'
     model= ContentModel
     fields= ('header', "text", "picture")

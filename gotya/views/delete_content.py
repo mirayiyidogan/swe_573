@@ -3,9 +3,12 @@ from gotya.models import ContentModel
 from django.shortcuts import get_object_or_404,redirect
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 #@login_required(login_url='/')
 class ContentDeleteView(DeleteView):
+    login_url = reverse_lazy('login')
     template_name= 'pages/delete_content_confirm.html'
     success_url= reverse_lazy('myspace')
 

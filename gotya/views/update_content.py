@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.urls import reverse_lazy
 from gotya.forms import AddContentModelForm
 from gotya.models import ContentModel
 from django.contrib.auth.decorators import login_required
 from django.views.generic import UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class ContentUpdateView(UpdateView):
+
+class ContentUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
     template_name= 'pages/update-content.html'
     fields = ('header', "text", "picture")
 
