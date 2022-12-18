@@ -12,6 +12,9 @@ from django.views.generic import TemplateView,RedirectView
 urlpatterns = [
     path('', homepage, name='homepage'),
     path("communication", CommunicationFormView.as_view(), name='communication'),
+    path('mail-sent', TemplateView.as_view(
+        template_name='pages/mail-sent.html'
+    ), name='mail-sent'),
     path('about', TemplateView.as_view(
         template_name ='pages/about.html'
     ), name='about'),
