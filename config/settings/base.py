@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from re import template
-from environ import Env
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,15 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-env = Env()
-env.read_env(env_file=BASE_DIR /".env")
+env = environ.Env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env(
     "SECRET_KEY"
 )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,9 +39,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -95,13 +94,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -162,14 +154,14 @@ MEDIA_ROOT= os.path.join(BASE_DIR,'media/') #PATH FOR MANAGE.PY IS BASE_DIR
 
 
 # Host for sending e-mail.
-SENDGRID_API_KEY = env('SENDGRID_API_KEY')
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL='apikey'
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
+#SENDGRID_API_KEY = env('SENDGRID_API_KEY')
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'smtp.sendgrid.net'
+#EMAIL_USE_TLS = True
+#EMAIL_PORT = 587
+#DEFAULT_FROM_EMAIL='apikey'
+#EMAIL_HOST_USER = 'apikey'
+#EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
 
 
 
