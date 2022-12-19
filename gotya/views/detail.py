@@ -3,6 +3,10 @@ from gotya.models import ContentModel
 from gotya.forms import AddCommentFormModel
 from django.views import View
 from django.contrib import messages
+import logging
+
+logger = logging.getLogger('content_read')
+
 
 class DetailView(View):
     http_method_names = ['get', 'post']
@@ -10,6 +14,10 @@ class DetailView(View):
 
     def get(self, request, slug):
         content = get_object_or_404(ContentModel, slug=slug)
+
+        if request.user.is_authenticated:
+            logger.info('The content has been read by ' + request.user.username)
+
         comments = content.comments.all()
         return render(request, 'pages/detail.html', context={
             'content' : content, 

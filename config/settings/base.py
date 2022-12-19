@@ -163,5 +163,32 @@ MEDIA_ROOT= os.path.join(BASE_DIR,'media/') #PATH FOR MANAGE.PY IS BASE_DIR
 #EMAIL_HOST_USER = 'apikey'
 #EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'basic_info': {
+            'format': '{levelname} {message} {name} {asctime}',
+            'style': '{'
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler'
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'logs/content_read.log',
+            'formatter': 'basic_info'
+        }
+    },
+    'loggers': {
+        'content_read': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO'
+        }
+    }
+}
+
 
 

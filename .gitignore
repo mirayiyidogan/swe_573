@@ -4,3 +4,5 @@ __pycache__
 db.sqlite3
 .env
 content_pics
+prod.sqlite3
+logs
