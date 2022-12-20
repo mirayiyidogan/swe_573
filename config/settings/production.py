@@ -1,6 +1,6 @@
 from .base import *
 
-ALLOWED_HOSTS = ['www.gotya.com']
+ALLOWED_HOSTS = []
 DEBUG = False
 
 DATABASES = {

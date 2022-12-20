@@ -24,9 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env(
-    "SECRET_KEY"
-)
+SECRET_KEY = env('MY_SECRET_KEY')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -57,8 +56,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'crispy_forms',
     "crispy_bootstrap5",
-    'storages'
-
 ]
 
 MIDDLEWARE = [
@@ -202,4 +199,3 @@ sentry_sdk.init(
     traces_sample_rate=1.0,
     send_default_pii=True
 )
-
