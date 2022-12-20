@@ -14,11 +14,13 @@
       <div class="card-body">
         <h5 class="card-title">
           <a href="{% url 'detail' slug=content.slug%}">{{ content.header }} </a> by <a href="{% url 'profile' username=content.user.username %}"> {{ content.user}} </a>
-          
         </h5>
         <p class="card-text">{{ content.text|safe|truncatechars_html:150 }}</p>
         <p class="card-text"><small class="text-muted">Posted at {{ content.created_date|timesince }}</small></p>
       </div>
+      {% if content.url %}
+      <p><a class="btn btn-primary" href="{{ content.url|safe|truncatechars_html:200 }}">Link</a></p>
+      {% endif %}
     </div>
   </div>
 </div>

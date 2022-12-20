@@ -10,7 +10,7 @@ class ContentCreateView(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     template_name= 'pages/create-content.html'
     model= ContentModel
-    fields= ('header', "text", "picture")
+    fields= ('header', "text", "picture", "url")
 
     def get_success_url(self):
         return reverse('detail', kwargs={

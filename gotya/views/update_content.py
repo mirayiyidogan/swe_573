@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class ContentUpdateView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
     template_name= 'pages/update-content.html'
-    fields = ('header', "text", "picture")
+    fields = ('header', "text", "picture", "url")
 
     def get_object(self):
         content = get_object_or_404(
