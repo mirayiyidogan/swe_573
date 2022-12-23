@@ -7,11 +7,11 @@ DEBUG = False
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '8000',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }

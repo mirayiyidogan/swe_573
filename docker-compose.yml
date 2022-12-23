@@ -8,9 +8,18 @@ services:
       - ".:/gotya"
     ports:
       - "8000:8000"
-  sqlite3:
-    image: nouchka/sqlite3:latest
-    stdin_open: true
-    tty: true
+    depends-on:
+      - db
+  db:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE='gotya_db'
+      - MYSQL_USER='root'
+      - MYSQL_PASSWORD='gotya'
+      - MYSQL_ROOT_PASSWORD='gotyaroot'
+      - MYSQL_HOST='127.0.0.1'
     volumes:
-      - ./gotya/db/:/root/db/
+      - /tmp/app/mysqld:/var/run/mysqld
+      - ./db:/var/lib/mysql
