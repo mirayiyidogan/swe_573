@@ -7,6 +7,7 @@ name = "pypi"
 django = "==4.1.2"
 django-autoslug = "*"
 django-ckeditor = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

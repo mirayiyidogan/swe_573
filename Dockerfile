@@ -1,4 +1,4 @@
-FROM python:3.10.2 as base
+FROM python:3.10.6 as base
 ENV PYTHONBUFFERED=1
 
 WORKDIR /gotya

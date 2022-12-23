@@ -24,3 +24,4 @@ urllib3==1.26.12
 wrapt==1.14.1
 #crispy_forms==1.14.0
 sentry-sdk==1.12.1
+psql==14.5
