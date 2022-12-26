@@ -2,16 +2,16 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from .base import *
 
-ALLOWED_HOSTS = ['www.gotya.com', '18.185.97.220', '127.0.0.1:8000']
-DEBUG = False
+ALLOWED_HOSTS = ['www.gotya.com', '18.185.97.220', '127.0.0.1']
+DEBUG = True
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': '127.0.0.1',
+        'NAME': 'gotya_db_dv',
+        'USER': 'root',
+        'PASSWORD': env('MY_PASSWORD'),
+        'HOST': 'host.docker.internal',
         'PORT': '3306',
     }
 }
