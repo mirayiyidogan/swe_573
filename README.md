@@ -9,7 +9,7 @@ To download the and setup the project
 Checkout the [wiki](https://github.com/mirayiyidogan/swe_573/wiki) page of orject for more info.
 [`code`](#code).
 
-* In order to run your project : 
+* In order to run the project on your local: 
 `python manage.py runserver`
 
 * For Docker, You need to build the related project in docker
