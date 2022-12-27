@@ -1,19 +1,21 @@
 version: "3.4"
 services:
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_DATABASE: gotya_db_dv
-      MYSQL_ROOT_PASSWORD: Gotya_1234
-      MYSQL_USER:  gotyaadmin
-      MYSQL_PASSWORD: env('MY_PASSWORD')
   gotya:
-    build: .
-    image: gotya
-    container_name: gotya
+      build: .
+      image: gotya
+      container_name: gotya
+      volumes:
+        - ".:/gotya"
+      ports:
+        - "8000:8000"
+      depends_on:
+        - db
+  db:
+    image: postgres:13
     volumes:
-      - ".:/gotya"
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+volumes:
+  postgres_data:
+  

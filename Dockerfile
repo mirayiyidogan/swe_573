@@ -10,6 +10,7 @@ WORKDIR /gotya
 #RUN apk add netcat-openbsd
 
 COPY requirements.txt requirements.txt
+RUN pip install psycopg2
 RUN pip install -r requirements.txt
 
 COPY . .
