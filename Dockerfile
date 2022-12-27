@@ -1,17 +1,20 @@
-FROM python:3.11 as base
-ENV PYTHONBUFFERED=1
+#Dockerfile
 
-WORKDIR /gotya
-#FROM alphine
-#RUN apk add --no-cache mariadb-connector-c-dev
-#RUN apk update 
-#RUN apk add python3 python3-dev mariadb-dev build-base 
-#RUN pip3 install mysqlclient && apk del python3-dev mariadb-dev build-base
-#RUN apk add netcat-openbsd
+# Pull base image
+FROM python:3.9.16-slim-bullseye
 
-COPY requirements.txt requirements.txt
-RUN pip install psycopg2
+# Set environment variables
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Set work directory
+WORKDIR /code
+
+# Install dependencies
+RUN apt-get update && apt-get upgrade -y && apt-get install gcc -y
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
+# Copy project
 COPY . .
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
